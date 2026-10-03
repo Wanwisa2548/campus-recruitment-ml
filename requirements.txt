@@ -4,3 +4,7 @@ scikit-learn
 matplotlib
 seaborn
 jupyter
+
+# Task 2: image classification
+tensorflow>=2.16,<3
+Pillow
