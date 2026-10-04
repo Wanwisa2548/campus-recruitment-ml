@@ -1,0 +1,3 @@
+# Local dataset verification environment and Python caches
+.dataset-venv/
+__pycache__/
