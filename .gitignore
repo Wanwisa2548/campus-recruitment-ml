@@ -1,3 +1,31 @@
 # Local dataset verification environment and Python caches
 .dataset-venv/
 __pycache__/
+
+
+# ==============================
+# Task 2 - Local Dataset
+# ==============================
+
+# Raw food images
+thai_food_raw/**/*.jpg
+thai_food_raw/**/*.jpeg
+thai_food_raw/**/*.png
+thai_food_raw/**/*.webp
+
+# Generated train / validation / test images
+thai_food/**/*.jpg
+thai_food/**/*.jpeg
+thai_food/**/*.png
+thai_food/**/*.webp
+
+# Trained model
+*.keras
+*.h5
+
+# Local demo image
+my_food_test.jpg
+
+# Python cache
+__pycache__/
+*.pyc
