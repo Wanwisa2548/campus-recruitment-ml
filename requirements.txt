@@ -4,6 +4,7 @@ scikit-learn
 matplotlib
 seaborn
 jupyter
+ipywidgets
 
 # Task 2: image classification
 tensorflow>=2.16,<3

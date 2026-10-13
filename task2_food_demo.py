@@ -40,7 +40,7 @@ CALORIE_DISCLAIMER = (
 def predict_food(image_path):
     """ทำนายภาพใหม่ด้วยโมเดลเดิม; EXIF -> RGB -> bilinear resize -> raw pixels."""
     if globals().get("final_model") is None:
-        print("ยังไม่มีโมเดลใน kernel — รันเซลล์ Presentation Mode เพื่อโหลดโมเดลเดิม")
+        print("ยังไม่มีโมเดลใน kernel — รันเซลล์ Live Demo เพื่อโหลดโมเดลเดิม")
         return None
     path = Path(image_path)
     if not path.is_file():
@@ -98,7 +98,7 @@ def _predict_demo_image(selected_path):
 def choose_food_image():
     """เปิด Windows file picker โดยไม่พึ่ง training cells."""
     if globals().get("final_model") is None or not callable(globals().get("predict_food")):
-        print("กรุณารัน Presentation Mode เพื่อโหลดโมเดลเดิมก่อนเลือกรูป")
+        print("กรุณารัน Live Demo เพื่อโหลดโมเดลเดิมก่อนเลือกรูป")
         return None
     root = None
     try:
@@ -135,12 +135,12 @@ def choose_food_image():
 def show_food_picker():
     """แสดงปุ่ม; ถ้าไม่มี widget ให้ใช้ choose_food_image() โดยตรง."""
     if globals().get("final_model") is None or not callable(globals().get("predict_food")):
-        print("ยังไม่พร้อมสาธิต — รัน Presentation Mode ท้าย Notebook ก่อน")
+        print("ยังไม่พร้อมสาธิต — รัน Live Demo ท้าย Notebook ก่อน")
         return
     try:
         import ipywidgets as widgets
     except ImportError:
-        print("ไม่มี ipywidgets — รันเซลล์ fallback: choose_food_image()")
+        print("ไม่มี ipywidgets — เรียก choose_food_image() ในเซลล์ Live Demo")
         return
 
     button = widgets.Button(
@@ -162,7 +162,7 @@ def show_food_picker():
 
     button.on_click(on_click)
     display(button, output)
-    print("กดเลือกรูปอาหาร หากปุ่มไม่แสดง ให้รันเซลล์ fallback ด้านล่าง")
+    print("กดเลือกรูปอาหาร หากปุ่มไม่แสดง ให้เรียก choose_food_image() ในเซลล์ Live Demo")
 
 
 def start_demo(model=None):
@@ -201,5 +201,5 @@ def start_demo(model=None):
         show_food_picker()
     except Exception as exc:
         print("ปุ่ม widget ไม่พร้อมใช้งาน:", exc)
-        print("โมเดลยังพร้อมทำนาย — ใช้เซลล์ fallback ใต้ Presentation Mode")
+        print("โมเดลยังพร้อมทำนาย — เรียก choose_food_image() ในเซลล์ Live Demo")
     return final_model
